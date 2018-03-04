@@ -1,0 +1,10 @@
+body {
+  --green: rgba(66, 182, 42, 1);
+  --black: rgba(27, 30, 29, 1);
+  --grey: rgba(95, 108, 127, 1);
+  --white: rgba(248, 255, 246, 1);
+  --pale: rgba(238, 240, 242, 1);
+
+  font-size: 62.5%;
+
+}
