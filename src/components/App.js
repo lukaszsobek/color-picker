@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import '../styles/App.css';
 
 import { hideModal, showModal } from "../actions";
+import { hexToRGBA } from "../utils";
 
 import ColorPickerForm from "./ColorPickerForm";
 import ColorPickerModal from "./ColorPickerModal";
@@ -18,17 +19,25 @@ class App extends Component {
   }
 
   onSubmit(e) {
-    const { hideModal } = this.props;
+    const { hideModal, availableColors } = this.props;
 
+    // get color
+    const selectedColor = availableColors.filter(
+      color => color.name === e.target.form_input.value
+    )[0];
+
+    // convert Hex to RGBA
+    const formattedColor = hexToRGBA(`#${selectedColor.hex}`, 0.5);
+    console.log(formattedColor);
+
+    // change bgColor of Document
+    const documentBody = document.querySelector("body");
+    documentBody.style.backgroundColor = formattedColor;
+    
+    // cleanup
     e.preventDefault();
     e.target.form_input.value = ""
     hideModal();
-
-    const documentBody = document.querySelector("body");
-    documentBody.style.backgroundColor = "red";
-
-
-    // change background color based on choice
   }
 
   onChange(e) {
@@ -37,7 +46,6 @@ class App extends Component {
 
     this.setState(() => ({ inputValue }));
     
-
     if(inputValue.length < 2) {
       return hideModal();
     }
@@ -56,6 +64,10 @@ class App extends Component {
   getClickedColor(colorName) {
     this.props.hideModal();
     this.setState(() => ({ inputValue: colorName }))
+  }
+
+  selectColor() {
+
   }
 
   render() {
