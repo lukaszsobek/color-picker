@@ -1,7 +1,7 @@
 import React from "react";
 
 const ColorPickerModal = props => {
-    const { isModalVisible, suggestedColors, chooseColor } = props;
+    const { isModalVisible, suggestedColors, getClickedColor } = props;
 
     if(!isModalVisible) {
         return null;
@@ -13,7 +13,7 @@ const ColorPickerModal = props => {
         return (
             <div
                 key={key}
-                onClick={() => console.log(color)}
+                onClick={() => getClickedColor(name)}
                 className="suggested-color"
             >
                 <div

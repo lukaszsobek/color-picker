@@ -3,6 +3,7 @@ import { SHOW_MODAL, HIDE_MODAL } from "../constants";
 
 const initialState = {
     availableColors,
+    currentBgColor: "eef0f2",
     isModalVisible: false 
 }
 

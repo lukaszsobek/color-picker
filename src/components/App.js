@@ -11,7 +11,10 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { filteredResults: [] }
+    this.state = {
+      filteredResults: [],
+      inputValue: ""
+    }
   }
 
   onSubmit(e) {
@@ -21,6 +24,10 @@ class App extends Component {
     e.target.form_input.value = ""
     hideModal();
 
+    const documentBody = document.querySelector("body");
+    documentBody.style.backgroundColor = "red";
+
+
     // change background color based on choice
   }
 
@@ -28,17 +35,27 @@ class App extends Component {
     const { showModal, hideModal, availableColors } = this.props;
     const inputValue = e.target.value;
 
-    if(inputValue.length > 1) {
+    this.setState(() => ({ inputValue }));
+    
 
-      const filteredResults = availableColors.filter(
-        (color) => color.name.indexOf(inputValue) !== -1
-      );
-      this.setState(() => ({ filteredResults }));
-      showModal();
-
-    } else {
-      hideModal();
+    if(inputValue.length < 2) {
+      return hideModal();
     }
+    
+    const filteredResults = availableColors.filter(
+      color => color.name.indexOf(inputValue) !== -1
+    );
+    
+    this.setState(() => ({
+      filteredResults,
+      inputValue
+    }));
+    showModal();
+  }
+
+  getClickedColor(colorName) {
+    this.props.hideModal();
+    this.setState(() => ({ inputValue: colorName }))
   }
 
   render() {
@@ -49,10 +66,12 @@ class App extends Component {
         <ColorPickerForm
           onChange={e => this.onChange(e)}
           onSubmit={e => this.onSubmit(e)}
+          inputValue={this.state.inputValue}
         />
         <ColorPickerModal
           isModalVisible={isModalVisible}
           suggestedColors={this.state.filteredResults}
+          getClickedColor={(colorName) => this.getClickedColor(colorName)}
         />
       </div>
     );

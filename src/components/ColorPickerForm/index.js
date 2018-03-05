@@ -1,13 +1,14 @@
 import React from "react";
 
 const ColorPickerForm = props => {
-    const {onChange, onSubmit} = props;
+    const {inputValue, onChange, onSubmit} = props;
     return (
         <form onSubmit={onSubmit}>
             <input
                 name="form_input"
                 onChange={onChange}
                 autoComplete="off"
+                value={inputValue}
             />
             <button>Accept</button>
         </form>
