@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ColorPickerForm returns a form with undefined values 1`] = `
+<form
+  onSubmit={undefined}
+>
+  <input
+    autoComplete="off"
+    name="form_input"
+    onChange={undefined}
+    value={undefined}
+  />
+  <button>
+    Accept
+  </button>
+</form>
+`;
+
+exports[`ColorPickerForm returns a working form 1`] = `
+<form
+  onSubmit="onSubmit"
+>
+  <input
+    autoComplete="off"
+    name="form_input"
+    onChange="onChange"
+    value=""
+  />
+  <button>
+    Accept
+  </button>
+</form>
+`;

@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shows modal 1`] = `
+Object {
+  "isModalVisible": true,
+  "type": "SHOW_MODAL",
+}
+`;

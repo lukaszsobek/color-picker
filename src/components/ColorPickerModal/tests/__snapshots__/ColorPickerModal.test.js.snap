@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ColorPickerModal displays 2 items with isModalVisible 1`] = `
+Array [
+  <div
+    className="suggested-color"
+    onClick={[Function]}
+>
+    <div
+        className="color-preview"
+        style={
+            Object {
+                "backgroundColor": "#undefined",
+              }
+        }
+    />
+     (#
+    )
+</div>,
+  <div
+    className="suggested-color"
+    onClick={[Function]}
+>
+    <div
+        className="color-preview"
+        style={
+            Object {
+                "backgroundColor": "#undefined",
+              }
+        }
+    />
+     (#
+    )
+</div>,
+]
+`;
