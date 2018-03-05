@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`mountColors with 2 availableColors 1`] = `
+Object {
+  "availableColors": Array [
+    1,
+    2,
+  ],
+  "type": "MOUNT_COLORS",
+}
+`;
+
+exports[`mountColors with undefined availableColors 1`] = `
+Object {
+  "availableColors": undefined,
+  "type": "MOUNT_COLORS",
+}
+`;

@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Set loading state of data is \`blah\` when set to blah 1`] = `
+Object {
+  "loadState": "blah",
+  "type": "SET_DATA_LOADED_STATE",
+}
+`;
+
+exports[`Set loading state of data is \`loading\` by default 1`] = `
+Object {
+  "loadState": "loading",
+  "type": "SET_DATA_LOADED_STATE",
+}
+`;

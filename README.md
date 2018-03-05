@@ -2,9 +2,9 @@
   JavaScript, ES6, React, JSX, Redux, Jest
 
 ### Clone the repo, and then:
-yarn start - starts dev server with auto update and lint
-yarn test - starts tests with auto update
-yarn build - creates production build
+- yarn start - starts dev server with auto update and lint
+- yarn test - starts tests with auto update
+- yarn build - creates production build
 
 ### Test coverage:  
   App render, actions, components
@@ -24,5 +24,6 @@ yarn build - creates production build
 
 ### Issues:
 - Currently the suggestions are one letter behind
-- a couple of action and reducer tests are missing
-- functions inside App.js are not tested
+- A couple of reducer tests are missing
+- Functions inside App.js are not tested
+- Fix App test
