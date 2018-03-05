@@ -28,7 +28,6 @@ class App extends Component {
 
     // convert Hex to RGBA
     const formattedColor = hexToRGBA(`#${selectedColor.hex}`, 0.5);
-    console.log(formattedColor);
 
     // change bgColor of Document
     const documentBody = document.querySelector("body");
@@ -64,10 +63,6 @@ class App extends Component {
   getClickedColor(colorName) {
     this.props.hideModal();
     this.setState(() => ({ inputValue: colorName }))
-  }
-
-  selectColor() {
-
   }
 
   render() {
