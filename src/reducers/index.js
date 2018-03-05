@@ -1,8 +1,8 @@
-import availableChoices from "./temp";
+import availableColors from "./temp";
 import { SHOW_MODAL, HIDE_MODAL } from "../constants";
 
 const initialState = {
-    availableChoices,
+    availableColors,
     isModalVisible: false 
 }
 
