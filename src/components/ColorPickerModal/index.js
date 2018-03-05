@@ -5,15 +5,19 @@ const ColorPickerModal = props => {
         isModalVisible,
         suggestedColors,
         getClickedColor,
-        isDataLoaded
+        dataLoadedState
     } = props;
 
     if(!isModalVisible) {
         return null;
     }
 
-    if(!isDataLoaded) {
+    if(dataLoadedState === "loading") {
         return <div className="loading-message">Loading...</div>
+    }
+
+    if(dataLoadedState === "error") {
+        return <div className="loading-message">Error fetching suggestions.</div>
     }
 
     if(suggestedColors.length === 0) {

@@ -2,13 +2,13 @@ import {
     SHOW_MODAL,
     HIDE_MODAL,
     MOUNT_COLORS,
-    SET_DATA_IS_LOADED
+    SET_DATA_LOADED_STATE
 } from "../constants";
 
 const initialState = {
     availableColors:[],
     isModalVisible: false,
-    isDataLoaded: false
+    dataLoadedState: "loading"
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -33,10 +33,10 @@ const rootReducer = (state = initialState, action) => {
                 availableColors: action.availableColors
             }
 
-        case SET_DATA_IS_LOADED: 
+        case SET_DATA_LOADED_STATE: 
             return {
                 ...state,
-                isDataLoaded: true
+                dataLoadedState: action.loadState
             }
 
         default:

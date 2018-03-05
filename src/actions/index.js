@@ -1,13 +1,13 @@
 import showModal from "./showModal";
 import hideModal from "./hideModal";
 import mountColors from "./mountColors";
-import setDataIsLoaded from "./setDataIsLoaded";
+import setDataLoadedState from "./setDataLoadedState";
 
 export {
     showModal,
     hideModal,
     mountColors,
-    setDataIsLoaded
+    setDataLoadedState
 };
 
 

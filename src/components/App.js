@@ -4,7 +4,7 @@ import axios from "axios";
 
 import '../styles/App.css';
 
-import { hideModal, showModal, mountColors, setDataIsLoaded } from "../actions";
+import { hideModal, showModal, mountColors, setDataLoadedState } from "../actions";
 import { hexToRGBA } from "../utils";
 
 import ColorPickerForm from "./ColorPickerForm";
@@ -21,16 +21,16 @@ class App extends Component {
   }
 
   componentDidMount() {
-    const { mountColors, setDataIsLoaded } = this.props;
+    const { mountColors, setDataLoadedState } = this.props;
     axios.get("http://www.mocky.io/v2/5a37a7403200000f10eb6a2d?mocky-delay=5s")
       .then(res => {
         mountColors(res.data);
-        setDataIsLoaded(true);
+        setDataLoadedState("loaded");
         this.setInput();
       })
       .catch(err => {
         mountColors([]);
-        setDataIsLoaded(true);
+        setDataLoadedState("error");
         this.setInput();
       });
   }
@@ -69,7 +69,7 @@ class App extends Component {
   }
 
   onChange(e) {
-    const { showModal, hideModal, availableColors } = this.props;
+    const { showModal, hideModal } = this.props;
     const inputValue = e.target.value;
 
     this.setInput(inputValue);
@@ -87,7 +87,7 @@ class App extends Component {
   }
 
   render() {
-    const { isModalVisible, isDataLoaded } = this.props;
+    const { isModalVisible, dataLoadedState } = this.props;
     const { inputValue, filteredResults} = this.state;
 
     return (
@@ -99,7 +99,7 @@ class App extends Component {
         />
         <ColorPickerModal
           isModalVisible={isModalVisible}
-          isDataLoaded={isDataLoaded}
+          dataLoadedState={dataLoadedState}
           suggestedColors={filteredResults}
           getClickedColor={(colorName) => this.getClickedColor(colorName)}
         />
@@ -111,14 +111,14 @@ class App extends Component {
 const mapStatetoProps = state => ({
   availableColors: state.availableColors,
   isModalVisible: state.isModalVisible,
-  isDataLoaded: state.isDataLoaded
+  dataLoadedState: state.dataLoadedState
 });
 
 const mapDispatchToProps = dispatch => ({
   showModal: () => dispatch(showModal()),
   hideModal: () => dispatch(hideModal()),
   mountColors: colors => dispatch(mountColors(colors)),
-  setDataIsLoaded: () => dispatch(setDataIsLoaded())
+  setDataLoadedState: (state) => dispatch(setDataLoadedState(state))
 });
 
 export default connect(mapStatetoProps, mapDispatchToProps)(App);
