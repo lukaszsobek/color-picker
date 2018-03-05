@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
+import axios from "axios";
+
 import '../styles/App.css';
 
-import { hideModal, showModal } from "../actions";
+import { hideModal, showModal, mountColors, setDataIsLoaded } from "../actions";
 import { hexToRGBA } from "../utils";
 
 import ColorPickerForm from "./ColorPickerForm";
@@ -18,46 +20,65 @@ class App extends Component {
     }
   }
 
+  componentDidMount() {
+    const { mountColors, setDataIsLoaded } = this.props;
+    axios.get("http://www.mocky.io/v2/5a37a7403200000f10eb6a2d?mocky-delay=5s")
+      .then(res => {
+        mountColors(res.data);
+        setDataIsLoaded(true);
+        this.setInput();
+      })
+      .catch(err => {
+        mountColors([]);
+        setDataIsLoaded(true);
+        this.setInput();
+      });
+  }
+
   onSubmit(e) {
     const { hideModal, availableColors } = this.props;
 
-    // get color
     const selectedColor = availableColors.filter(
       color => color.name === e.target.form_input.value
     )[0];
 
-    // convert Hex to RGBA
     const formattedColor = hexToRGBA(`#${selectedColor.hex}`, 0.5);
 
-    // change bgColor of Document
     const documentBody = document.querySelector("body");
     documentBody.style.backgroundColor = formattedColor;
     
-    // cleanup
     e.preventDefault();
     e.target.form_input.value = ""
     hideModal();
+  }
+
+  getFilteredResults() {
+    const { availableColors } = this.props;
+    const { inputValue } = this.state;
+
+    return availableColors.filter(
+      color => color.name.indexOf(inputValue) !== -1
+    );
+  }
+
+  setInput(inputValue = this.state.inputValue) {
+    this.setState(() => ({
+      filteredResults: this.getFilteredResults(),
+      inputValue
+    }));   
   }
 
   onChange(e) {
     const { showModal, hideModal, availableColors } = this.props;
     const inputValue = e.target.value;
 
-    this.setState(() => ({ inputValue }));
-    
+    this.setInput(inputValue);
+
     if(inputValue.length < 2) {
-      return hideModal();
+      hideModal();
+    } else {
+      showModal();
     }
-    
-    const filteredResults = availableColors.filter(
-      color => color.name.indexOf(inputValue) !== -1
-    );
-    
-    this.setState(() => ({
-      filteredResults,
-      inputValue
-    }));
-    showModal();
   }
 
   getClickedColor(colorName) {
@@ -66,18 +87,20 @@ class App extends Component {
   }
 
   render() {
-    const { isModalVisible } = this.props;
+    const { isModalVisible, isDataLoaded } = this.props;
+    const { inputValue, filteredResults} = this.state;
 
     return (
       <div className="color-picker">
         <ColorPickerForm
           onChange={e => this.onChange(e)}
           onSubmit={e => this.onSubmit(e)}
-          inputValue={this.state.inputValue}
+          inputValue={inputValue}
         />
         <ColorPickerModal
           isModalVisible={isModalVisible}
-          suggestedColors={this.state.filteredResults}
+          isDataLoaded={isDataLoaded}
+          suggestedColors={filteredResults}
           getClickedColor={(colorName) => this.getClickedColor(colorName)}
         />
       </div>
@@ -87,12 +110,15 @@ class App extends Component {
 
 const mapStatetoProps = state => ({
   availableColors: state.availableColors,
-  isModalVisible: state.isModalVisible
+  isModalVisible: state.isModalVisible,
+  isDataLoaded: state.isDataLoaded
 });
 
 const mapDispatchToProps = dispatch => ({
   showModal: () => dispatch(showModal()),
-  hideModal: () => dispatch(hideModal())
+  hideModal: () => dispatch(hideModal()),
+  mountColors: colors => dispatch(mountColors(colors)),
+  setDataIsLoaded: () => dispatch(setDataIsLoaded())
 });
 
 export default connect(mapStatetoProps, mapDispatchToProps)(App);

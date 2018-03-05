@@ -1,10 +1,14 @@
-import availableColors from "./temp";
-import { SHOW_MODAL, HIDE_MODAL } from "../constants";
+import {
+    SHOW_MODAL,
+    HIDE_MODAL,
+    MOUNT_COLORS,
+    SET_DATA_IS_LOADED
+} from "../constants";
 
 const initialState = {
-    availableColors,
-    currentBgColor: "eef0f2",
-    isModalVisible: false 
+    availableColors:[],
+    isModalVisible: false,
+    isDataLoaded: false
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -21,6 +25,18 @@ const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 isModalVisible: false
+            }
+
+        case MOUNT_COLORS:
+            return {
+                ...state,
+                availableColors: action.availableColors
+            }
+
+        case SET_DATA_IS_LOADED: 
+            return {
+                ...state,
+                isDataLoaded: true
             }
 
         default:
