@@ -1,6 +1,10 @@
 import React from "react";
 
-const ColorPickerModal = () => {
+const ColorPickerModal = props => {
+    if(!props.isModalVisible) {
+        return null;
+    }
+
     return <p>ColorPickerModal</p>
 }
 
