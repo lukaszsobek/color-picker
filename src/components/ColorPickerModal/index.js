@@ -17,14 +17,14 @@ const ColorPickerModal = props => {
     }
 
     if(dataLoadedState === "error") {
-        return <div className="loading-message">Error fetching suggestions.</div>
+        return <div className="error-message">Error fetching suggestions.</div>
     }
 
     if(suggestedColors.length === 0) {
         return <div className="no-results">No matches.</div>
     }
 
-    return suggestedColors.map((color, key) => {
+    const SuggestedColorsList = suggestedColors.map((color, key) => {
         const { hex, name } = color;
 
         return (
@@ -37,10 +37,16 @@ const ColorPickerModal = props => {
                 className="color-preview"
                 style={{ backgroundColor: "#" + hex }}
                 />
-                {name} (#{hex})
+                {name}
             </div>
         );
     });
+
+    return (
+        <div className="suggested-colors">
+            { SuggestedColorsList }
+        </div>
+    );
 
 }
 

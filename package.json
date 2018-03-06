@@ -2,6 +2,7 @@
   "name": "color-picker",
   "version": "0.1.0",
   "private": true,
+  "homepage" : "http://www.lukaszsobek.com/repo/color-picker",
   "dependencies": {
     "axios": "^0.18.0",
     "react": "^16.2.0",

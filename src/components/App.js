@@ -91,6 +91,7 @@ class App extends Component {
 
     return (
       <div className="color-picker">
+        <h1>Enter a color</h1>
         <ColorPickerForm
           onChange={e => this.onChange(e)}
           onSubmit={e => this.onSubmit(e)}

@@ -17,38 +17,36 @@ exports[`ColorPickerModal displays \`no matches\` with 0 items 1`] = `
 `;
 
 exports[`ColorPickerModal displays 2 items 1`] = `
-Array [
+<div
+  className="suggested-colors"
+>
   <div
     className="suggested-color"
     onClick={[Function]}
->
+  >
     <div
-        className="color-preview"
-        style={
-            Object {
-                "backgroundColor": "#undefined",
-              }
+      className="color-preview"
+      style={
+        Object {
+          "backgroundColor": "#undefined",
         }
+      }
     />
-     (#
-    )
-</div>,
+  </div>
   <div
     className="suggested-color"
     onClick={[Function]}
->
+  >
     <div
-        className="color-preview"
-        style={
-            Object {
-                "backgroundColor": "#undefined",
-              }
+      className="color-preview"
+      style={
+        Object {
+          "backgroundColor": "#undefined",
         }
+      }
     />
-     (#
-    )
-</div>,
-]
+  </div>
+</div>
 `;
 
 exports[`ColorPickerModal returns null if !isModalVisible 1`] = `null`;
