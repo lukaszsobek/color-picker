@@ -23,7 +23,6 @@
   file of a folder in such a small application. 
 
 ### Issues:
-- Currently the suggestions are one letter behind
 - A couple of reducer tests are missing
 - Functions inside App.js are not tested
 - Fix App test

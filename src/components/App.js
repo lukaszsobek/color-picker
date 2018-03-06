@@ -52,9 +52,8 @@ class App extends Component {
     hideModal();
   }
 
-  getFilteredResults() {
+  getFilteredResults(inputValue) {
     const { availableColors } = this.props;
-    const { inputValue } = this.state;
 
     return availableColors.filter(
       color => color.name.indexOf(inputValue) !== -1
@@ -63,7 +62,7 @@ class App extends Component {
 
   setInput(inputValue = this.state.inputValue) {
     this.setState(() => ({
-      filteredResults: this.getFilteredResults(),
+      filteredResults: this.getFilteredResults(inputValue),
       inputValue
     }));   
   }
@@ -72,7 +71,7 @@ class App extends Component {
     const { showModal, hideModal } = this.props;
     const inputValue = e.target.value;
 
-    this.setInput(inputValue);
+    this.setInput(inputValue);   
 
     if(inputValue.length < 2) {
       hideModal();
