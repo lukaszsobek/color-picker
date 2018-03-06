@@ -1,6 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ColorPickerModal displays 2 items with isModalVisible 1`] = `
+exports[`ColorPickerModal displays \`loading...\` message if data not loaded 1`] = `
+<div
+  className="loading-message"
+>
+  Loading...
+</div>
+`;
+
+exports[`ColorPickerModal displays \`no matches\` with 0 items 1`] = `
+<div
+  className="no-results"
+>
+  No matches.
+</div>
+`;
+
+exports[`ColorPickerModal displays 2 items 1`] = `
 Array [
   <div
     className="suggested-color"
@@ -34,3 +50,5 @@ Array [
 </div>,
 ]
 `;
+
+exports[`ColorPickerModal returns null if !isModalVisible 1`] = `null`;

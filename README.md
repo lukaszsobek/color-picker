@@ -7,7 +7,7 @@
 - yarn build - creates production build
 
 ### Test coverage:  
-  App render, actions, components
+  App render, actions, components, reducers
 
 ### Note:  
   The state handling is separated into two parts: 
@@ -23,6 +23,6 @@
   file of a folder in such a small application. 
 
 ### Issues:
-- A couple of reducer tests are missing
 - Functions inside App.js are not tested
-- Fix App test
+- App test complains about "Warning: Can only update a mounted or mounting component"
+- Accepting on a faulty value causes app to reload.

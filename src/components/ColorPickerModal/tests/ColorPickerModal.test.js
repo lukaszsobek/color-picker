@@ -7,19 +7,28 @@ describe("ColorPickerModal", () => {
         const props = {
             isModalVisible: false
         }
-        expect(ColorPickerModal(props)).toBe(null);
+        expect(ColorPickerModal(props)).toMatchSnapshot();
     });
 
-    it("displays 0 items with isModalVisible",() => {
+    it("displays `loading...` message if data not loaded",() => {
+
+        const props = {
+            isModalVisible: true,
+            dataLoadedState: "loading"
+        }
+        expect(ColorPickerModal(props)).toMatchSnapshot();
+    });
+
+    it("displays `no matches` with 0 items",() => {
 
         const props = {
             isModalVisible: true,
             suggestedColors: []
         }
-        expect(ColorPickerModal(props)).toEqual([]);
+        expect(ColorPickerModal(props)).toMatchSnapshot();
     });
 
-    it("displays 2 items with isModalVisible",() => {
+    it("displays 2 items",() => {
 
         const props = {
             isModalVisible: true,
