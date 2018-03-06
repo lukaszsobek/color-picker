@@ -1,6 +1,8 @@
 ### Color Picker with:
   JavaScript, ES6, React, JSX, Redux, Jest
 
+![color_picker_thumbnail](https://user-images.githubusercontent.com/23530054/37028791-929cb8aa-2135-11e8-8861-42f0f7305088.png)
+
 ### Clone the repo, and then:
 - yarn start - starts dev server with auto update and lint
 - yarn test - starts tests with auto update
@@ -25,4 +27,5 @@
 ### Issues:
 - Functions inside App.js are not tested
 - App test complains about "Warning: Can only update a mounted or mounting component"
-- Accepting on a faulty value causes app to reload.
+- Can submit before colors are loaded
+- Loaded states are defined as strings instead of constants

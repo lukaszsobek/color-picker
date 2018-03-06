@@ -37,17 +37,17 @@ class App extends Component {
 
   onSubmit(e) {
     const { hideModal, availableColors } = this.props;
+    e.preventDefault();
 
     const selectedColor = availableColors.filter(
       color => color.name === e.target.form_input.value
-    )[0];
+    )[0] || "#fff";
 
     const formattedColor = hexToRGBA(`#${selectedColor.hex}`, 0.5);
 
     const documentBody = document.querySelector("body");
     documentBody.style.backgroundColor = formattedColor;
     
-    e.preventDefault();
     e.target.form_input.value = ""
     hideModal();
   }
