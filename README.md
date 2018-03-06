@@ -26,6 +26,5 @@
 
 ### Issues:
 - Functions inside App.js are not tested
-- App test complains about "Warning: Can only update a mounted or mounting component"
 - Can submit before colors are loaded
 - Loaded states are defined as strings instead of constants

@@ -18,21 +18,21 @@ class App extends Component {
       filteredResults: [],
       inputValue: ""
     }
-  }
 
-  componentDidMount() {
     const { mountColors, setDataLoadedState } = this.props;
     axios.get("http://www.mocky.io/v2/5a37a7403200000f10eb6a2d?mocky-delay=5s")
       .then(res => {
+        const { inputValue } = this.state;
         mountColors(res.data);
         setDataLoadedState("loaded");
-        this.setInput();
+        this.setState(() => ({
+          filteredResults: this.getFilteredResults(inputValue)
+        }));
       })
       .catch(err => {
         mountColors([]);
         setDataLoadedState("error");
-        this.setInput();
-      });
+      })
   }
 
   onSubmit(e) {
@@ -60,18 +60,14 @@ class App extends Component {
     );
   }
 
-  setInput(inputValue = this.state.inputValue) {
-    this.setState(() => ({
-      filteredResults: this.getFilteredResults(inputValue),
-      inputValue
-    }));   
-  }
-
   onChange(e) {
     const { showModal, hideModal } = this.props;
     const inputValue = e.target.value;
 
-    this.setInput(inputValue);   
+    this.setState(() => ({
+      filteredResults: this.getFilteredResults(inputValue),
+      inputValue
+    }));    
 
     if(inputValue.length < 2) {
       hideModal();
