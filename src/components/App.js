@@ -92,6 +92,7 @@ class App extends Component {
           onChange={e => this.onChange(e)}
           onSubmit={e => this.onSubmit(e)}
           inputValue={inputValue}
+          dataLoadedState={dataLoadedState}
         />
         <ColorPickerModal
           isModalVisible={isModalVisible}

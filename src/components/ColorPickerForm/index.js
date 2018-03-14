@@ -1,7 +1,7 @@
 import React from "react";
 
 const ColorPickerForm = props => {
-    const {inputValue, onChange, onSubmit} = props;
+    const {inputValue, onChange, onSubmit, dataLoadedState} = props;
     return (
         <form onSubmit={onSubmit}>
             <input
@@ -10,7 +10,9 @@ const ColorPickerForm = props => {
                 autoComplete="off"
                 value={inputValue}
             />
-            <button>Accept</button>
+            <button disabled={dataLoadedState !== "loaded"}>
+            { dataLoadedState !== "loaded" ? "Loading..." : "Accept" }
+            </button>
         </form>
     );
 }
