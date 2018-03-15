@@ -20,7 +20,7 @@ class App extends Component {
     }
 
     const { mountColors, setDataLoadedState } = this.props;
-    axios.get("http://www.mocky.io/v2/5a37a7403200000f10eb6a2d?mocky-delay=5s")
+    axios.get("https://www.mocky.io/v2/5a37a7403200000f10eb6a2d?mocky-delay=5s")
       .then(res => {
         const { inputValue } = this.state;
         mountColors(res.data);

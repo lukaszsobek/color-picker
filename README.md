@@ -3,7 +3,6 @@
 
 ### Working version
 https://lukaszsobek.com/repo/color-picker/
-(accept insecure content as api is hosted on http )
 
 ![color_picker_thumbnail](https://user-images.githubusercontent.com/23530054/37028791-929cb8aa-2135-11e8-8861-42f0f7305088.png)
 
